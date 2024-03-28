@@ -1,0 +1,25 @@
+class Node:
+    def __init__(self, key):
+        self.key = key
+        self.left = None
+        self.right = None
+
+def optimal_bst(keys, frequencies):
+    n = len(keys)
+    dp = [[0] * n for _ in range(n)]
+
+    for i in range(n):
+        dp[i][i] = frequencies[i]
+
+    for gap in range(1, n):
+        for i in range(n - gap):
+            j = i + gap
+            dp[i][j] = min((dp[i][k - 1] if k > i else 0) + (dp[k + 1][j] if k < j else 0) + sum(frequencies[i:j + 1]) for k in range(i, j + 1))
+
+    return dp[0][n - 1]
+
+# Example usage:
+keys = [10, 12, 20]
+frequencies = [34, 8, 50]
+cost = optimal_bst(keys, frequencies)
+print("Cost of optimal BST:", cost)
