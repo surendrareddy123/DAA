@@ -1,0 +1,21 @@
+def binomial_coefficient(n, k):
+    # Create a 2D array to store binomial coefficients
+    C = [[0] * (k + 1) for _ in range(n + 1)]
+
+    # Base case: set C[i][0] = 1 for all i
+    for i in range(n + 1):
+        C[i][0] = 1
+
+    # Fill the array using the recursive formula
+    for i in range(1, n + 1):
+        for j in range(1, min(i, k) + 1):
+            C[i][j] = C[i - 1][j - 1] + C[i - 1][j]
+
+    # Return the binomial coefficient
+    return C[n][k]
+
+# Example usage:
+n = 5
+k = 2
+result = binomial_coefficient(n, k)
+print(f"The binomial coefficient of {n} choose {k} is:", result
