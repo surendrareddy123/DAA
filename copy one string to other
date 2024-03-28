@@ -1,0 +1,15 @@
+1.Copy one string to another string
+def copy_string(source, destination, currentIndex=0):
+    if currentIndex == len(source):
+        return destination
+    
+    destination += source[currentIndex]
+    currentIndex += 1
+
+    return copy_string(source, destination, currentIndex)
+
+# Example usage:
+source_str = "Hello, World!"
+destination_str = ""
+result = copy_string(source_str, destination_str)
+print(result)
