@@ -1,0 +1,11 @@
+def reverse_string(string):
+    if len(string) == 0:
+        return string
+    else:
+        return reverse_string(string[1:]) + string[0]
+
+# Test the function
+str1 = "Hello, World!"
+
+print("Original String: ", str1)
+print("Reversed String: ", reverse_string(str1))
