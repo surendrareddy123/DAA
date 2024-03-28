@@ -1,0 +1,18 @@
+ Define the function to reverse the number recursively
+def reverse_number(num, reversed_num=0):
+    # Base case: when the number becomes zero, return the reversed number
+    if num == 0:
+        return reversed_num
+    else:
+        # Extract the last digit of the number
+        last_digit = num % 10
+        # Append the last digit to the reversed number
+        reversed_num = (reversed_num * 10) + last_digit
+        # Recursive call with the remaining digits of the number
+        return reverse_number(num // 10, reversed_num)
+
+# Example usage
+input_num = int(input("Enter a number to reverse: "))  # Input from the user
+reversed_num = reverse_number(input_num)  # Call the function to reverse the number
+print("Original number:", input_num)  # Output the original number
+print("Reversed number:", reversed_num)  # Output the reversed number
