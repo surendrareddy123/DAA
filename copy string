@@ -1,0 +1,12 @@
+def copy_string(src, dest, index=0):
+    if src[index] == '\0':
+        return
+    dest[index] = src[index]
+    copy_string(src, dest, index + 1)
+
+# Test the function
+str1 = "Hello, World!"
+str2 = [0] * len(str1)
+
+copy_string(str1, str2)
+print("Copied string: ", ''.join(str2))
