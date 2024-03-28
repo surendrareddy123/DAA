@@ -1,0 +1,16 @@
+def min_max_sequence(numbers, low, high, min_so_far, max_so_far):
+    if low > high:
+        print("Minimum: ", min_so_far)
+        print("Maximum: ", max_so_far)
+        return
+
+    if numbers[low] < min_so_far:
+        min_so_far = numbers[low]
+    if numbers[low] > max_so_far:
+        max_so_far = numbers[low]
+
+    min_max_sequence(numbers, low + 1, high, min_so_far, max_so_far)
+
+# Test the function
+numbers = [10, 32, 41, 60, 10, 34, 100]
+min_max_sequence(numbers, 0, len(numbers) - 1, numbers[0], numbers[0])
