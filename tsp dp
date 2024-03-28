@@ -1,0 +1,26 @@
+import sys
+
+def tsp_dp(distances):
+    n = len(distances)
+    memo = [[float('inf')] * n for _ in range(1 << n)]
+    memo[1][0] = 0
+
+    for mask in range(1, 1 << n):
+        for i in range(n):
+            if mask & (1 << i):
+                for j in range(n):
+                    if mask & (1 << j):
+                        memo[mask][i] = min(memo[mask][i], memo[mask ^ (1 << i)][j] + distances[j][i])
+
+    min_cost = min(memo[(1 << n) - 1][j] + distances[j][0] for j in range(n))
+    return min_cost
+
+# Example usage:
+distances = [
+    [0, 10, 15, 20],
+    [10, 0, 35, 25],
+    [15, 35, 0, 30],
+    [20, 25, 30, 0]
+]
+
+print("Minimum cost:", tsp_dp(distances)
