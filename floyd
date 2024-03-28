@@ -1,0 +1,30 @@
+def floyd(graph):
+    n = len(graph)
+    shortest_paths = [[float('inf')] * n for _ in range(n)]
+
+    for i in range(n):
+        shortest_paths[i][i] = 0
+
+    for i in range(n):
+        for j in range(n):
+            if graph[i][j] != 0:
+                shortest_paths[i][j] = graph[i][j]
+
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                shortest_paths[i][j] = min(shortest_paths[i][j], shortest_paths[i][k] + shortest_paths[k][j])
+
+    return shortest_paths
+
+# Example usage:
+graph = [
+    [0, 5, float('inf'), 10],
+    [float('inf'), 0, 3, float('inf')],
+    [float('inf'), float('inf'), 0, 1],
+    [float('inf'), float('inf'), float('inf'), 0]
+]
+
+shortest_paths = floyd(graph)
+for row in shortest_paths:
+    print(row)
