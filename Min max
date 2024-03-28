@@ -1,0 +1,20 @@
+def find_min_max(lst):
+    if not lst:
+        return None, None  # Empty list case
+
+    min_value = float('inf')  # Initialize min_value to positive infinity
+    max_value = float('-inf')  # Initialize max_value to negative infinity
+
+    for num in lst:
+        if num < min_value:
+            min_value = num
+        if num > max_value:
+            max_value = num
+
+    return min_value, max_value
+
+# Example usage:
+numbers = [5, 2, 9, 1, 7, 3]
+min_val, max_val = find_min_max(numbers)
+print("Minimum value:", min_val)
+print("Maximum value:", max_val)
